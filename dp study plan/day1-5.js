@@ -1,3 +1,62 @@
+//https://leetcode.com/study-plan/dynamic-programming/?progress=oxzv3mm
+
+//DAY 1
+
+//https://leetcode.com/problems/fibonacci-number/
+var fib = function(n) {
+    dp = [];
+    dp[0] = 0;
+    dp[1] = 1;
+    for(i = 2; i<=n; i++){
+        dp[i] = dp[i-1]+ dp[i-2];
+    }
+    return dp[n];
+};
+
+//https://leetcode.com/problems/n-th-tribonacci-number/
+
+var tribonacci = function(n) {
+    dp = [];
+    dp[0] = 0;
+    dp[1] = 1;
+    dp[2] = 1;
+    for(i = 3; i<=n; i++){
+        dp[i] = dp[i-1]+ dp[i-2] + dp[i-3];
+    }
+    return dp[n];
+};
+
+//DAY 2
+
+//https://leetcode.com/problems/climbing-stairs/
+//is just fib by pattern recognition
+// why??
+
+var climbStairs = function(n) {
+    dp = [];
+    dp[0] = 1;
+    dp[1] = 1;
+    for(i = 2; i<=n; i++){
+        dp[i] = dp[i-1]+ dp[i-2];
+    }
+    return dp[n];
+};
+
+//https://leetcode.com/problems/min-cost-climbing-stairs/
+
+//start with small array
+//dp[0] is value of minimum cost to reach that stair
+var minCostClimbingStairs = function(cost) {
+    dp = [];
+    dp[0] = cost[0];
+    dp[1] = cost[1];
+    cost[cost.length] = 0;
+    for(i = 2; i<cost.length+1; i++){
+        dp[i] = Math.min(dp[i-1]+cost[i], dp[i-2] + cost[i]);
+        
+    }
+    return dp[cost.length-1];
+};
 
 // DAY 3
 
@@ -54,4 +113,10 @@ const robHelp = (nums, startIndex) => {
 // 3 2 2 3
 arr2 = [1,2,3];
 console.log(rob2(arr2, 0));
+
+//TODO: make better solution
+
+
 //https://leetcode.com/problems/delete-and-earn/ 
+
+//
