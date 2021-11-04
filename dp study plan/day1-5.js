@@ -245,6 +245,44 @@ var maxSubArrayDP = function(nums) {
     return biggest;
 };
 
-let a = [-2,1,-3,4,-1,2,1,-5,4];
+// let a = [-2,1,-3,4,-1,2,1,-5,4];
+// // let b = [-1,-2,-1,-1,-1];
+// console.log(maxSubArrayDP(a));
+
+//kadanes algorithm
+
+var kadanes = function(nums) {
+    let max = -99999;
+    let localMax = 0;
+    for(i = 0; i<nums.length; i++){
+        localMax = Math.max(nums[i], localMax+nums[i]);
+        if(localMax > max){
+            max = localMax;
+        }
+    }
+    return max;
+}
+
+//let a = [-2,1,-3,4,-1,2,1,-5,4];
 // let b = [-1,-2,-1,-1,-1];
-console.log(maxSubArrayDP(a));
+//console.log(kadanes(a));
+
+//
+
+let a = [5,-3,5];
+let b = [...a, ...a];
+console.log(b);
+console.log(kadanes(b));
+
+var kadanes = function(nums) {
+    let max = -99999;
+    let localMax = 0;
+    
+    for(i = 0; i<nums.length; i++){
+        localMax = Math.max(nums[i], localMax+nums[i]);
+        if(localMax > max){
+            max = localMax;
+        }
+    }
+    return max;
+}
