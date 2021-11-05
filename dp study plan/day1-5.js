@@ -269,20 +269,40 @@ var kadanes = function(nums) {
 
 //
 
-let a = [5,-3,5];
-let b = [...a, ...a];
-console.log(b);
-console.log(kadanes(b));
 
-var kadanes = function(nums) {
+
+var kadanes2 = function(nums, len) {
     let max = -99999;
     let localMax = 0;
-    
+    let localLen = 1;
     for(i = 0; i<nums.length; i++){
-        localMax = Math.max(nums[i], localMax+nums[i]);
+        let temp = localMax+nums[i];
+        if(localLen > len){
+            temp -= nums[i-len];
+        }
+
+        if(nums[i] > temp){
+            localMax = nums[i];
+            localLen = 0;
+        }
+        else{
+            localMax = temp;
+            localLen++;
+        }
+
         if(localMax > max){
             max = localMax;
         }
+
+        console.log(localMax + "  "+temp + " "+ localLen);
     }
     return max;
 }
+
+//we want to run kadanes but with a lenght of len
+//if lenght > len, we remove dp[i-len];
+let a = [5,-3,5];
+let b = [...a, ...a];
+console.log(b);
+console.log(kadanes2(b, 3));
+
