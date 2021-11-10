@@ -301,8 +301,27 @@ var kadanes2 = function(nums, len) {
 
 //we want to run kadanes but with a lenght of len
 //if lenght > len, we remove dp[i-len];
-let a = [5,-3,5];
-let b = [...a, ...a];
-console.log(b);
-console.log(kadanes2(b, 3));
+// let a = [5,-3,5];
+// let b = [...a, ...a];
+// console.log(b);
+// console.log(kadanes2(b, 3));
 
+//coin change
+https://leetcode.com/problems/coin-change/ 
+
+var coinChange = function(coins, amount) {
+    
+};
+
+//https://leetcode.com/problems/coin-change/ 
+
+
+
+ a = [186,419,83,408];
+ 
+console.log(coinChange(a, 6249));
+
+
+// let s = "hello";
+// let r = "?e*o";
+//console.log(s[0]);
