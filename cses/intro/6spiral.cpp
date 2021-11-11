@@ -3,6 +3,7 @@
 using namespace std;
 #define pb push_back
 #define ll unsigned long long
+#define fio ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 //find value starting from mx^2,0
 void findx(ll start, ll max, ll x, ll y){
     if(y < max){
@@ -24,6 +25,7 @@ void findy(ll start, ll max, ll x, ll y){
 }
 
 int main () {
+    fio;
     ll n;
     ll y; 
     ll x;
