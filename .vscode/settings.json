@@ -4,6 +4,7 @@
         "xstring": "cpp",
         "vector": "cpp",
         "cmath": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "xiosbase": "cpp"
     }
 }
