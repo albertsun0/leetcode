@@ -8,7 +8,7 @@ using namespace std;
 
 int main () {
     fio;
-    int n; cin >> n;
-
+    ll n; cin >> n;
+    cout << (1 << 16);
     return 0;
 }
