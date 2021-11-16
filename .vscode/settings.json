@@ -5,6 +5,9 @@
         "vector": "cpp",
         "cmath": "cpp",
         "algorithm": "cpp",
-        "xiosbase": "cpp"
+        "xiosbase": "cpp",
+        "bitset": "cpp",
+        "deque": "cpp",
+        "string": "cpp"
     }
 }
