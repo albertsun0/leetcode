@@ -27,7 +27,7 @@ int main () {
             if(c % dy[i] == 0){
                 pos[i] += dx[i];
                 pos[i] = pos[i] % s.length();
-                if(s[pos[i] == '#']){
+                if(s[pos[i]] == '#'){
                     ans[i]++;
                 }
             }
@@ -42,6 +42,7 @@ int main () {
     }
     int r = 1;
     for(int i:ans){
+      
         r*=i;
     }
     cout << r;
