@@ -1,0 +1,131 @@
+<center>
+    <canvas id="canvas" width="800" height="800" style="border:1px solid grey"></canvas>
+</center>
+
+
+<script>
+    var c = document.getElementById("canvas");
+    var ctx = c.getContext("2d");
+    
+    const edgeLength = 270;
+    const center = c.width/2;
+    //const increment = 3;
+    const drawChange = (edgeLength/90);
+    
+    let rotateX = 0;
+    let rotateY = 0;
+
+    let cur = center - edgeLength/2;
+
+    let frontPoints = [[cur,cur],[cur+edgeLength, cur],[cur+edgeLength, cur+edgeLength],[cur,cur+edgeLength]];
+    let backPoints = [[cur,cur],[cur+edgeLength, cur],[cur+edgeLength, cur+edgeLength],[cur,cur+edgeLength]];
+
+    const drawSquare = () =>{
+        clear();
+        //ctx.clearRect(0,0,c.width,c.height);
+        
+        ctx.beginPath();
+        ctx.strokeStyle = 'blue';
+        ctx.moveTo(backPoints[0][0], backPoints[0][1]);
+        for(i = 1; i< 4; i++){
+            ctx.lineTo(backPoints[i][0], backPoints[i][1]);
+        }
+        ctx.lineTo(backPoints[0][0], backPoints[0][1]);
+
+        for(i = 0; i<4; i++){
+            ctx.moveTo(frontPoints[i][0], frontPoints[i][1]);
+            ctx.lineTo(backPoints[i][0], backPoints[i][1]);
+        }
+        ctx.stroke();
+
+        ctx.beginPath();
+        ctx.strokeStyle = 'red';
+        ctx.fillStyle = 'red';
+        ctx.moveTo(frontPoints[0][0], frontPoints[0][1]);
+        //ctx.lineTo(frontPoints[10], frontPoints[1][1])
+        for(i = 1; i< 4; i++){
+            ctx.lineTo(frontPoints[i][0], frontPoints[i][1]);
+        }
+        ctx.lineTo(frontPoints[0][0], frontPoints[0][1]);
+        ctx.fill();
+       
+
+        ctx.stroke();
+        
+    }
+
+    const clear = () =>{
+        ctx.clearRect(0,0,c.width,c.height);
+    }
+
+    // const updateEdge = (edge, change) =>{
+    //     //edge is 0 - 3 
+    //                 ///top   right  down  left
+    //     const edges = [[0,1],[1,2],[2,3],[3,0]];
+    //     frontPoints[edge][0] 
+    // }   
+
+    window.addEventListener('keydown', (e) => {
+        let dx = 0;
+        let dy = 0;
+        
+        if(e.key == "ArrowRight"){
+            dx=1;
+            if(rotateX > 0){
+                frontPoints[1][0]-=drawChange;
+                frontPoints[2][0]-=drawChange;
+                backPoints[0][0]+=drawChange;
+                backPoints[3][0]+=drawChange;
+            }
+            
+        }
+        if(e.key == "ArrowLeft"){
+            dx=-1;
+            if(rotateX < 0){
+                frontPoints[0][0]+=drawChange;
+                frontPoints[3][0]+=drawChange;
+                backPoints[1][0]-=drawChange;
+                backPoints[2][0]-=drawChange;
+            }
+            
+        }
+        if(e.key == "ArrowUp"){
+            dy=1;
+            if(rotateY > 0){
+                frontPoints[0][1] +=drawChange;
+                frontPoints[1][1] +=drawChange;
+                backPoints[2][1] -= drawChange;
+                backPoints[3][1] -= drawChange;
+            }
+        }
+        if(e.key == "ArrowDown"){
+            dy=-1;
+            if(rotateY < 0){
+                frontPoints[2][1]+=drawChange;
+                frontPoints[3][1]+=drawChange;
+                backPoints[0][1] -= drawChange;
+                backPoints[1][1] -= drawChange;
+            }
+            
+        }
+        rotateX +=dx;
+        rotateY += dy;
+        console.log(rotateX);
+        console.log(rotateY);
+        for(i = 0; i<4; i++){
+            //move points
+            frontPoints[i][0] += dx*drawChange;
+            backPoints[i][1] += dy*drawChange;
+            backPoints[i][0] -= dx*drawChange;
+            frontPoints[i][1] -= dy*drawChange;
+
+            //the two front points in direction you move in need to decrease by d
+            
+        }
+        drawSquare();
+    });
+
+
+   
+    
+</script>
