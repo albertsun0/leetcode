@@ -9,22 +9,25 @@ using namespace std;
 int main () {
     fio;
     int n; cin >> n;
-    ll sum = 0;
     vector<ll> v;
     for(int i = 0; i<n; i++){
         ll a; cin>> a;
         v.pb(a);
     }
     sort(v.begin(), v.end());
-    ll mid = v[v.size()/2];
-    // if(n%2 == 1){
-        for(int i = 0; i<v.size(); i++){
-            sum+=abs(mid-v[i]);
+    
+    ll smallest = 1;
+
+    for(int i = 0; i< n; i++){
+        if(v[i] > smallest){
+            cout << smallest;
+            return 0;
         }
-        cout << sum;
-    // }
-    // else{
-    //     if()
-    // }
+        if(v[i] <= smallest){
+            smallest += v[i];
+        }
+    }
+    cout << smallest;
+
     return 0;
 }

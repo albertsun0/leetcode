@@ -9,19 +9,21 @@ using namespace std;
 int main () {
     fio;
     int n; cin >> n;
-    ll sum = 0;
-    vector<ll> v;
+    vector<int> v(n,0);
     for(int i = 0; i<n; i++){
-        ll a; cin>> a;
-        v.pb(a);
+        int a; cin>> a;
+        v[a-1] = i;
     }
-    sort(v.begin(), v.end());
-    ll mid = v[v.size()/2];
-    // if(n%2 == 1){
-        for(int i = 0; i<v.size(); i++){
-            sum+=abs(mid-v[i]);
+    int round = 1;
+    int pos = v[0];
+    for (int i = 1; i < n; i++){
+        if(v[i] < pos){
+            round++;
         }
-        cout << sum;
+        pos = v[i];
+    }
+    cout << round;
+
     // }
     // else{
     //     if()
