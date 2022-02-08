@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
+#include <bits/stdc++.h>
 using namespace std;
 #define pb push_back
 #define ll long long
@@ -9,11 +10,6 @@ using namespace std;
 int bin(vector<int> v , int x){
     int left = 0;
     int right = v.size();
-    // cout << "bin" << " " << x << nl;
-    // for(auto i : v){
-    //     cout << i << " ";
-    // }
-    // cout << nl;
     while(left <= right){
         int mid = (right + left)/2;
         //cout << v[mid] << nl;
@@ -32,39 +28,59 @@ int bin(vector<int> v , int x){
 
 int main () {
     fio;
-    int n; cin >> n;
-    int m; cin >> m;
-    vector<int> v;
-    for(int i = 0; i<n ;i++){
-        int a; cin >> a;
-        v.pb(a);
-    }
+    // int n; cin >> n;
+    // int m; cin >> m;
+    // vector<int> v;
+    // for(int i = 0; i<n ;i++){
+    //     int a; cin >> a;
+    //     v.pb(a);
+    // }
 
-    sort(v.begin(), v.end());
+    // sort(v.begin(), v.end());
     
 
-    for(int i = 0; i< m; i++){ 
+    // for(int i = 0; i< m; i++){ 
+    //     int x; cin >> x;
+    //     if(v.size() == 0){
+    //         cout << "-1" << nl;
+    //     }
+    //     if(x < v[0]){
+    //         cout << "-1" << "\n";
+    //     }
+    //     else if(x > v[v.size() -1 ]){
+    //         cout << v[v.size() -1] << "\n";
+    //         v.pop_back();
+    //     }
+    //     else{
+    //         int index = bin(v, x);
+    //         cout << v[index] << "\n";
+    //         v.erase(v.begin() + index);
+    //     }
+    //     // for(auto i : v){
+    //     //     cout << i << " ";
+    //     // }
+    //     // cout << nl;
+        
+    // }
+
+    int n; int m;
+    multiset<int> s;
+    cin >> n >> m;
+    for(int i = 0; i<n; i++){
+        int a;
+        cin >> a;
+        s.insert(a);
+    }
+    for(int i = 0; i < m; i++){
         int x; cin >> x;
-        if(v.size() == 0){
+        auto it = s.upper_bound(x);
+        if(it == s.begin()){
             cout << "-1" << nl;
         }
-        if(x < v[0]){
-            cout << "-1" << "\n";
-        }
-        else if(x > v[v.size() -1 ]){
-            cout << v[v.size() -1] << "\n";
-            v.pop_back();
-        }
         else{
-            int index = bin(v, x);
-            cout << v[index] << "\n";
-            v.erase(v.begin() + index);
+            cout << *(--it) << nl;
+            s.erase(it);
         }
-        // for(auto i : v){
-        //     cout << i << " ";
-        // }
-        // cout << nl;
-        
     }
     return 0;
 }

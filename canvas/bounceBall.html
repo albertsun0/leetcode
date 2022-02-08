@@ -1,0 +1,51 @@
+<center>
+    <canvas id="canvas" width="800" height="800" style="border:1px solid grey"></canvas>
+</center>
+
+
+<script>
+    var c = document.getElementById("canvas");
+    var ctx = c.getContext("2d");
+
+    const fps = 144;
+    const width = 60;
+    const center = c.width/2;
+    //const increment = 3;
+    const vector2 = (x,y) =>{
+        return{x:x, y:y};
+    }
+
+    let pos = vector2(center,center);
+    let velocity = vector2(400, 400);
+    let acceleration = vector2(0, 1000);
+
+    const clear = () =>{
+        ctx.clearRect(0,0,c.width,c.height);
+    }
+    
+    const draw = () => {
+        clear();
+        ctx.beginPath();
+        console.log(pos);
+        console.log(velocity);
+        velocity.x += acceleration.x/fps;
+        velocity.y += acceleration.y/fps;
+        pos.x += velocity.x/fps;
+        pos.y += velocity.y/fps;
+
+        if(pos.x <= width/2 || pos.x >= c.width-width/2){
+            velocity.x = -velocity.x;
+        }
+        if(pos.y >= c.height-width/2 || pos.y <= width/2){
+            velocity.y = -velocity.y ;
+        }
+        ctx.arc(pos.x, pos.y, 30, 0, 2 * Math.PI);
+        ctx.stroke();
+    }
+
+    var intervalId = window.setInterval(function(){
+        draw();
+    }, 1000/fps);
+
+    
+</script>
