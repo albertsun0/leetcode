@@ -11,7 +11,7 @@ using namespace std;
 int main () {
     fio;
     
-    int n, k; cin >> n >> k;
+    ll n, k; cin >> n >> k;
 
     map<char, int> m;
 
@@ -20,7 +20,7 @@ int main () {
         m[c]++;
     }
 
-    vector<int> v;
+    vector<ll> v;
 
     for(auto i: m){
         v.push_back(i.second);
@@ -30,13 +30,13 @@ int main () {
 
     ll ans = 0;
     int i = 0;
-    while(k >= v[i]){
+    while(i < v.size() && k >= v[i]){
         k-= v[i];
-        ans+= v[i] * v[i];
+        ans += v[i] * v[i];
         i++;
     }
     if(k > 0){
-        ans+= k *k;
+        ans+= k*k;
     }
 
     cout << ans;
