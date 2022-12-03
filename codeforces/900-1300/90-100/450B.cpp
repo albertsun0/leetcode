@@ -10,7 +10,7 @@ using namespace std;
 
 int main () {
     fio;
-    int x,y,n; cin >> x >> y >> n;
+    ll x,y,n; cin >> x >> y >> n;
 
     /*  
         f(1) = 2
@@ -18,7 +18,7 @@ int main () {
         f(3) = f(2) + f(4)             -> 1 = 3 + f(4) -> f(4) = -2
         f(4) = f(1) + f(3) + f(4)
     */
-    int mod = 1000000007;
+    ll mod = 1000000007;
     ll cur = y-x;
     ll prev = y;
 
@@ -27,7 +27,20 @@ int main () {
         cur = cur - prev;
         prev = temp;
     }
-    cout << -1 % 10 << "\n";
+    
+    if(n == 1){
+        cur = x;
+    }
+    if(n == 2){
+        cur = y;
+    }
+    if(cur < 0){
+        while(cur < 0){
+            cur += mod;
+        }
+        cout << cur;
+        return 0;
+    }
     cout << cur % mod;
     return 0;
 }
