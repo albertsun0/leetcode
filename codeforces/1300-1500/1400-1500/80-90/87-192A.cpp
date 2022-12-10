@@ -14,14 +14,14 @@ int main () {
     
     set<ll> tnums;
 
-    ll max = 1e9;
+    ll max = 1e9+10;
 
-    for(ll i = 1; i*i < max; i++){
-        tnums.insert(i * (i+1));
+    for(ll i = 1; i*i < max*2; i++){
+        tnums.insert((i * (i+1))/2);
     }
 
     ll n; cin >> n;
-    n*=2;
+
     for(auto num:tnums){
         if(tnums.find(n - num) != tnums.end()){
             cout << "YES";
