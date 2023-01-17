@@ -5,6 +5,11 @@
         "deque": "cpp",
         "string": "cpp",
         "vector": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "xiosbase": "cpp",
+        "utility": "cpp",
+        "stack": "cpp",
+        "xutility": "cpp",
+        "queue": "cpp"
     }
 }
