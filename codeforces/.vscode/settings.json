@@ -10,6 +10,7 @@
         "utility": "cpp",
         "stack": "cpp",
         "xutility": "cpp",
-        "queue": "cpp"
+        "queue": "cpp",
+        "algorithm": "cpp"
     }
 }
