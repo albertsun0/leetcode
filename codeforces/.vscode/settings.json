@@ -11,6 +11,7 @@
         "stack": "cpp",
         "xutility": "cpp",
         "queue": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "xtree": "cpp"
     }
 }
