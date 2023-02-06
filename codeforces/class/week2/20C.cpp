@@ -11,8 +11,8 @@ using namespace std;
 #include <limits.h>
 #include <stack>
 #define fio ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
-
-
+typedef pair<long long,long long> pll;
+typedef pair<int,int> pii;
 int main () {
     fio;
     int n; int m; cin >> n >> m;
@@ -33,26 +33,32 @@ int main () {
         d.push_back({INT_MAX, -1});
     }
     // {distance (length of shortest path to node i), prev}
+    vector<bool> visited (n+1,false);
 
-    priority_queue<pair<int,int>> q;
+    priority_queue<pii, vector<pii>, greater<pii>> q;
     //{distance, node}
     q.push({0, 1});
     d[1] = {0,-1};
     while(!q.empty()){
         pair<int,int> p = q.top();
         int dist = p.first;
-        int prev = p.second;
+        int cur = p.second;
         q.pop();
-        for(int i = 0; i < g[prev].size(); i++){
-            int val = g[prev][i].first;
-            int cost = g[prev][i].second;
+        if(visited[cur]){
+            continue;
+        }
+        visited[cur] = true;
+        for(int i = 0; i < g[cur].size(); i++){
+            int val = g[cur][i].first;
+            int cost = g[cur][i].second;
             //found shorter path
-            if(dist + cost < d[val].first){
-                d[val].second = prev;
+            if(!visited[val] && dist + cost < d[val].first){
+                d[val].second = cur;
                 d[val].first = dist+cost;
                 q.push({dist+cost, val});
             }
         }
+        visited[cur] = 1;
     }
 
     // for(auto i: d){
