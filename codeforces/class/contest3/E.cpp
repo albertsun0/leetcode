@@ -8,7 +8,6 @@ using namespace std;
 #include <queue>
 #include <set>
 #include <map>
-<<<<<<< HEAD
 #define fio ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 #include <limits.h>
 #include <cmath>
@@ -75,62 +74,3 @@ int main () {
 
 
 */
-=======
-#include <limits.h>
-#include <stack>
-#define fio ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
-
-
-int main () {
-    fio;
-    int n; int m;
-    cin >> n >> m;
-    ll ans = 0;
-    if(n == 1 && m == 1){
-        cout << 1;
-        return 0;
-    }
-    if (n >= m){
-        ans = 1;
-    }
-    else{
-        cout << 0;
-        return 0;
-    }
-    if(m == 0){
-        ans = 0;
-    }
-    for(ll i = 2; i <= n; i++){
-        // if(i * m > n){
-        //     continue;
-        // }
-        ll offset = i - 1;
-        if(m == 0){
-            ans+= offset;
-            continue;
-        }
-        ll start = offset + i * (m-1);
-        // cout << i << " " << start << "\n";
-        if(start <= n){
-            ans += min(n - start, i);
-        }
-        //cout << ans << "\n";
-    }
-    cout << ans << "\n";
-
-    int test = 0;
-
-    // for(int i = 1; i <= n; i++){
-    //     for(int j = 1; j <= n; j++){
-    //         //cout << j/i << " ";
-    //         if(j/i == m){
-    //             test++;
-    //         }
-    //     }
-    //     //cout << "\n";
-    // }
-    // cout << test << "\n";
-    
-    return 0;
-}
->>>>>>> c518aa7a741ef11e7c4f0637a4f96d0007ca81bd
