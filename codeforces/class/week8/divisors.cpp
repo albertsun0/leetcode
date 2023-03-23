@@ -12,48 +12,31 @@ using namespace std;
 #include <limits.h>
 #include <cmath>
 
+int div(int n){
+    int ans = 0;
 
+    for(int i = 1; i*i <= n; i++){
+        if(n % i == 0){
+            if(n/i == i){
+                ans++;
+            }
+            else{
+                ans += 2;
+            }
+        }
+    }
+    return ans;
+}
 
 int main () {
     fio;
     int n; cin >> n;
-
-    for(int i = 0; i < 2 >> n; i++){
-        
+    for(int i = 0; i < n; i++){
+        int a; cin >> a;
+        cout << div(a) << "\n";
     }
-
+    
     return 0;
 }
 
-/*
-    00
-    01
-    11
-    10
-
-    000
-    001
-    011
-    010
-    110
-    111
-    101
-    100
-
-    0000
-    0001
-    0011
-    0010
-    0110
-    0111
-    0101
-    0100
-    1100
-    1101
-    1111
-    1110
-    1010
-    1011
-    1001
-    1000
-*/
+//1 2 4 8 16 
