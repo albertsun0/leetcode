@@ -1,3 +1,4 @@
+using namespace std;
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -5,15 +6,20 @@
 #include <set>
 #include <limits.h>
 
-using namespace std;
 #define pb push_back
 #define ll long long
 
-#define fio ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
+struct Node {
+    int a;
+    int b;
+    Node * next;
+}
+
 
 int main () {
-    fio;
-    int n; cin >> n;
-
+    Node * n = new Node(10);
+    Node * n2 = new Node(20);
+    n->next = n2;
+    cout << n -> value << " " << n ->next;
     return 0;
 }
