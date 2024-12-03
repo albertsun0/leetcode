@@ -11,14 +11,25 @@ using namespace std;
 int main () {
     fio;
     int n; cin >> n;
-    string s = "";
-   
-    for(int i =1; i<n; i++){
-        s+= to_string(i);
+    
+    // 9
+    // 90 10 - 99
+    // 900 100 - 999
+    // 
+    for (int i = 0; i < n; i++){
+        int k; cin >> k;
+        int start = 0;
+        int last = 9;
+        int iter = 1;
+        while(start + (iter * last * 10) < k){
+            start = start + (iter * last * 10);
+            iter += 1;
+            last *= 10;
+        }
+        cout << start << "\n";
+
     }
-    for(int i = 0; i< s.length(); i++){
-        cout << i+1 << " " << s[i] << "\n";
-    }
+    
     //cout << s;
     return 0;
 }

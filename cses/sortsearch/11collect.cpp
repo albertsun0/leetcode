@@ -24,9 +24,6 @@ int main () {
     }
     cout << round;
 
-    // }
-    // else{
-    //     if()
-    // }
+
     return 0;
 }

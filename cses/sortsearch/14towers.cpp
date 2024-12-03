@@ -12,32 +12,32 @@ int main () {
     fio;
     int n; cin >> n;
     vector<int> v(n,0);
-    vector<int> t(n,0);
     for(int i = 0; i<n; i++){
         int a; cin >> a;
         v[i] = a;
-        t[i] = a;
     }
+    vector<int> towers;
 
-    sort(t.begin(), t.end());
+    for (auto i: v){
+        // upper_bound: element that comes after i
+        auto it = upper_bound(towers.begin(), towers.end(), i);
 
-    int i = n-1;
-    int i2 = 0;
-    int ans = 0;
-    while(i >= 0){
-        set<int> curr;
-        for(int a = 0; a < n; a++){
-            if(v[a] == t[i] && curr.find(v[a]) == curr.end()){
-                curr.insert(v[a]);
-                v[a] = -1;
-                i--;
-            }
+        if(it == towers.end()){     
+            towers.push_back(i);
         }
-        ans++;
+        else{
+            towers[it - towers.begin()] = i;
+        }
     }
-    
-
-    cout << ans;
-
+    cout << towers.size() << "\n";
     return 0;
 }
+
+/*
+5
+3 8 2 1 5
+
+8 5 3 2 1
+
+
+*/

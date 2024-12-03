@@ -1,24 +1,24 @@
 #include <iostream>
 #include <vector>
 #include <algorithm>
-#include <map>
 #include <set>
+#include <map>
+#include <limits.h>
 using namespace std;
 #define pb push_back
 #define ll long long
 
 #define fio ios_base::sync_with_stdio(false);cin.tie(NULL);cout.tie(NULL)
 
-void recurse(set<string> &st, string letters, ){
-    
-}
-
 int main () {
     fio;
-    string s; cin >> s;
-    sort(s.begin(), s.end());
-    set<string> st;
-    
-
-    return 0;
+    int n; cin >> n;
+    for(int i=0; i < n; i++){
+        
+    }
 }
+
+// n = 7
+// i = n-i+1
+// 1 2 3 4 5 6 7
+// a b       b a
